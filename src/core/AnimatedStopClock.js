@@ -1,5 +1,6 @@
 import AnimatedNode from './AnimatedNode';
 import AnimatedClock from './AnimatedClock';
+import { AnimatedParam } from './AnimatedParam';
 import invariant from 'fbjs/lib/invariant';
 
 class AnimatedStopClock extends AnimatedNode {
@@ -8,8 +9,8 @@ class AnimatedStopClock extends AnimatedNode {
   constructor(clockNode) {
     super({ type: 'clockStop', clock: clockNode.__nodeID });
     invariant(
-      clockNode instanceof AnimatedClock,
-      'Node is not of an AnimatedClock type'
+      clockNode instanceof AnimatedClock || clockNode instanceof AnimatedParam,
+      `Reanimated: Animated.stopClock argument should be of type AnimatedClock but got ${clockNode}`
     );
     this._clockNode = clockNode;
   }
