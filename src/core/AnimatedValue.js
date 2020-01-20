@@ -1,3 +1,4 @@
+import ReanimatedModule from '../ReanimatedModule';
 import { createAnimatedSet as set } from '../core/AnimatedSet';
 import interpolate from '../derived/interpolate';
 import InternalAnimatedValue from './InternalAnimatedValue';
