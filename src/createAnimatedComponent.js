@@ -15,10 +15,6 @@ function listener(data) {
   component && component._updateFromNative(data.props);
 }
 
-function dummyFunction({ nativeEvent }) {
-  console.log('Dummy Received!', { nativeEvent });
-}
-
 const platformProps = Platform.select({
   web: {},
   default: { collapsable: false },
@@ -34,9 +30,6 @@ export default function createAnimatedComponent(Component) {
 
   class AnimatedComponent extends React.Component {
     _invokeAnimatedPropsCallbackOnMount = false;
-    static defaultProps = {
-      requiredEventsProps: ['onLayout'],
-    };
 
     constructor(props) {
       super(props);
@@ -232,11 +225,6 @@ export default function createAnimatedComponent(Component) {
           props[key] = this._filterNonAnimatedStyle(StyleSheet.flatten(value));
         } else if (!(value instanceof AnimatedNode)) {
           props[key] = value;
-        } else if (
-          value instanceof AnimatedEvent &&
-          inputProps.requiredEventsProps.includes(key)
-        ) {
-          props[key] = dummyFunction;
         }
       }
       return props;
