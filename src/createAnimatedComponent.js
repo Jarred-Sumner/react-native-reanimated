@@ -15,6 +15,8 @@ function listener(data) {
   component && component._updateFromNative(data.props);
 }
 
+function dummyFunction() {}
+
 const platformProps = Platform.select({
   web: {},
   default: { collapsable: false },
@@ -232,7 +234,7 @@ export default function createAnimatedComponent(Component) {
           value instanceof AnimatedEvent &&
           inputProps.requiredEventsProps.includes(key)
         ) {
-          props[key] = true;
+          props[key] = dummyFunction;
         }
       }
       return props;
