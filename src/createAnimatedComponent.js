@@ -15,7 +15,9 @@ function listener(data) {
   component && component._updateFromNative(data.props);
 }
 
-function dummyFunction() {}
+function dummyFunction({ nativeEvent }) {
+  console.log('Dummy Received!', { nativeEvent });
+}
 
 const platformProps = Platform.select({
   web: {},
