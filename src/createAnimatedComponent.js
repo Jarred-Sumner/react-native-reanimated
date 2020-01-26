@@ -30,6 +30,9 @@ export default function createAnimatedComponent(Component) {
 
   class AnimatedComponent extends React.Component {
     _invokeAnimatedPropsCallbackOnMount = false;
+    static defaultProps = {
+      requiredEventsProps: ['onLayout'],
+    };
 
     constructor(props) {
       super(props);
@@ -225,7 +228,10 @@ export default function createAnimatedComponent(Component) {
           props[key] = this._filterNonAnimatedStyle(StyleSheet.flatten(value));
         } else if (!(value instanceof AnimatedNode)) {
           props[key] = value;
-        } else if (value instanceof AnimatedEvent) {
+        } else if (
+          value instanceof AnimatedEvent &&
+          inputProps.requiredEventsProps.includes(key)
+        ) {
           props[key] = true;
         }
       }
