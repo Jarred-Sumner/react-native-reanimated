@@ -8,12 +8,38 @@ import { createOrReusePropsNode } from './core/AnimatedProps';
 
 import invariant from 'fbjs/lib/invariant';
 
+const warnDev = args =>
+  proces.env.NODE_ENV !== 'production' ? console.warn(...args) : null;
+
 const NODE_MAPPING = new Map();
 
 function listener(data) {
   const component = NODE_MAPPING.get(data.viewTag);
+
+  if (!component) {
+    warnDev('Missing component. detachPropUpdater must be called on unmount.');
+    return;
+  } else if (component && !component._updateFromNative) {
+    warnDev('_updateFromNative must be defined on component', component);
+    return;
+  }
+
   component && component._updateFromNative(data.props);
 }
+
+export const attachPropUpdater = (viewTag, ref) => {
+  NODE_MAPPING.set(viewTag, ref);
+  if (NODE_MAPPING.size === 1) {
+    ReanimatedEventEmitter.addListener('onReanimatedPropsChange', listener);
+  }
+};
+
+export const detachPropUpdater = viewTag => {
+  NODE_MAPPING.delete(viewTag);
+  if (NODE_MAPPING.size === 0) {
+    ReanimatedEventEmitter.removeAllListeners('onReanimatedPropsChange');
+  }
+};
 
 const platformProps = Platform.select({
   web: {},
@@ -179,18 +205,11 @@ export default function createAnimatedComponent(Component) {
 
     _attachPropUpdater() {
       const viewTag = findNodeHandle(this);
-      NODE_MAPPING.set(viewTag, this);
-      if (NODE_MAPPING.size === 1) {
-        ReanimatedEventEmitter.addListener('onReanimatedPropsChange', listener);
-      }
+      attachPropUpdater(viewTag, this);
     }
 
     _detachPropUpdater() {
-      const viewTag = findNodeHandle(this);
-      NODE_MAPPING.delete(viewTag);
-      if (NODE_MAPPING.size === 0) {
-        ReanimatedEventEmitter.removeAllListeners('onReanimatedPropsChange');
-      }
+      detachPropUpdater(viewTag);
     }
 
     componentDidUpdate(prevProps) {
