@@ -209,7 +209,7 @@ export default function createAnimatedComponent(Component) {
     }
 
     _detachPropUpdater() {
-      detachPropUpdater(viewTag);
+      detachPropUpdater(findNodeHandle(this));
     }
 
     componentDidUpdate(prevProps) {
