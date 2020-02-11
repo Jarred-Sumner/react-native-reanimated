@@ -25,5 +25,6 @@ Pod::Spec.new do |s|
   s.dependency "React-jsinspector"
   s.dependency "ReactCommon/jscallinvoker"
   s.dependency 'React-cxxreact'
+  s.dependency 'Folly'
 end
 
