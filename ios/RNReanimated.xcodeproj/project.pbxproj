@@ -31,6 +31,8 @@
 		44125DD12253A3C0003C1762 /* RCTConvert+REATransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 44125DD02253A3C0003C1762 /* RCTConvert+REATransition.m */; };
 		660A44292119B821006BFD5E /* REAConcatNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 660A44282119B820006BFD5E /* REAConcatNode.m */; };
 		66240C6920C68DEA00648F55 /* REAAlwaysNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 66240C6820C68DEA00648F55 /* REAAlwaysNode.m */; };
+		83DCFEF223F26B95001572E1 /* REAJSIModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83DCFEEE23F26B94001572E1 /* REAJSIModule.mm */; };
+		83DCFEF323F26B95001572E1 /* REAJSIUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83DCFEF123F26B94001572E1 /* REAJSIUtils.mm */; };
 		A12DA6B722EC228D00E8271A /* REAParamNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A12DA6B622EC228D00E8271A /* REAParamNode.m */; };
 		A12DA6B822EC228D00E8271A /* REAParamNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A12DA6B622EC228D00E8271A /* REAParamNode.m */; };
 		A12DA6BE22EC22E400E8271A /* REAFunctionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A12DA6BA22EC22E300E8271A /* REAFunctionNode.m */; };
@@ -134,6 +136,10 @@
 		660A442A2119B83E006BFD5E /* REAConcatNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REAConcatNode.h; sourceTree = "<group>"; };
 		66240C6720C68DEA00648F55 /* REAAlwaysNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REAAlwaysNode.h; sourceTree = "<group>"; };
 		66240C6820C68DEA00648F55 /* REAAlwaysNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REAAlwaysNode.m; sourceTree = "<group>"; };
+		83DCFEEE23F26B94001572E1 /* REAJSIModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = REAJSIModule.mm; sourceTree = "<group>"; };
+		83DCFEEF23F26B94001572E1 /* REAJSIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REAJSIUtils.h; sourceTree = "<group>"; };
+		83DCFEF023F26B94001572E1 /* REAJSIModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REAJSIModule.h; sourceTree = "<group>"; };
+		83DCFEF123F26B94001572E1 /* REAJSIUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = REAJSIUtils.mm; sourceTree = "<group>"; };
 		A12DA6B622EC228D00E8271A /* REAParamNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = REAParamNode.m; sourceTree = "<group>"; };
 		A12DA6B922EC22A900E8271A /* REAParamNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = REAParamNode.h; sourceTree = "<group>"; };
 		A12DA6BA22EC22E300E8271A /* REAFunctionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REAFunctionNode.m; sourceTree = "<group>"; };
@@ -236,6 +242,10 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				83DCFEF023F26B94001572E1 /* REAJSIModule.h */,
+				83DCFEEE23F26B94001572E1 /* REAJSIModule.mm */,
+				83DCFEEF23F26B94001572E1 /* REAJSIUtils.h */,
+				83DCFEF123F26B94001572E1 /* REAJSIUtils.mm */,
 				44125C76224FBE0B003C1762 /* Transitioning */,
 				440FEC0C209062F100EEC73A /* Nodes */,
 				440FEC0A209062F100EEC73A /* REAModule.h */,
@@ -342,6 +352,8 @@
 				440FEC31209062F100EEC73A /* REACondNode.m in Sources */,
 				44125DD12253A3C0003C1762 /* RCTConvert+REATransition.m in Sources */,
 				440FEC2C209062F100EEC73A /* REAPropsNode.m in Sources */,
+				83DCFEF223F26B95001572E1 /* REAJSIModule.mm in Sources */,
+				83DCFEF323F26B95001572E1 /* REAJSIUtils.mm in Sources */,
 				A12DA6BE22EC22E400E8271A /* REAFunctionNode.m in Sources */,
 				440FEC3B209062F100EEC73A /* REANodesManager.m in Sources */,
 				440FEC36209062F100EEC73A /* REAEventNode.m in Sources */,

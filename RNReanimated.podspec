@@ -20,5 +20,10 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency "React"
+  s.dependency "React-jsi"
+  s.dependency "React-jsiexecutor"
+  s.dependency "React-jsinspector"
+  s.dependency "ReactCommon/jscallinvoker"
+  s.dependency 'React-cxxreact'
 end
 
