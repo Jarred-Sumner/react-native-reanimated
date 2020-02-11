@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
   s.dependency "React-jsiexecutor"
   s.dependency "React-jsinspector"
   s.dependency "ReactCommon/jscallinvoker"
+  s.dependency 'ReactCommon/turbomodule/core'
   s.dependency 'React-cxxreact'
   s.dependency 'Folly'
 
