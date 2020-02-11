@@ -47,10 +47,10 @@ RCT_EXPORT_MODULE(ReanimatedModule);
   [bridge.eventDispatcher addDispatchObserver:self];
   [bridge.uiManager.observerCoordinator addObserver:self];
 
-  __block REAModule *this = self;
+  __block REAModule *_this = self;
   [bridge dispatchBlock:^{
-    REAJSIModule::install(this);
-  } queue:RCTJSThread]
+    REAJSIModule::install(_this);
+  } queue:RCTJSThread];
 }
 
 #pragma mark -- Transitioning API
