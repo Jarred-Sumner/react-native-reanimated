@@ -10,6 +10,7 @@
 #import "REAJSIUTils.h"
 #import <React/RCTBridge+Private.h>
 #import <RNReanimated/REAModule.h>
+#import <ReactCommon/TurboModule.h>
 
 @interface REAModule (ext)
 - (void) animateNextTransition:(nonnull NSNumber *)rootTag config:(NSDictionary *)config;
@@ -122,8 +123,9 @@ jsi::Value REAJSIModule::get(jsi::Runtime &runtime, const jsi::PropNameID &name)
       const jsi::Value *arguments,
       size_t count) -> jsi::Value {
 
+
       NSNumber *tag = convertJSIValueToObjCObject(runtime, arguments[0].asNumber(), jsInvoker);
-      RCTResponseSenderBlock block = convertJSIFunctionToCallback(runtime, arguments[1], jsInvoker)
+      RCTResponseSenderBlock block = convertJSIFunctionToCallback(runtime, arguments[1].getObject(runtime).getFunction(runtime), jsInvoker);
       [module getValue:tag callback:block];
       return jsi::Value(true);
     });
@@ -226,8 +228,8 @@ jsi::Value REAJSIModule::get(jsi::Runtime &runtime, const jsi::PropNameID &name)
            const jsi::Value *arguments,
            size_t count) -> jsi::Value {
 
-           NSArray *props = convertJSIArrayToNSArray(runtime, arguments[0], jsInvoker);
-            NSArray *uiProps = convertJSIArrayToNSArray(runtime, arguments[1], jsInvoker);
+           NSArray *props = convertJSIArrayToNSArray(runtime, arguments[0].getObject(runtime).getArray(runtime), jsInvoker);
+            NSArray *uiProps = convertJSIArrayToNSArray(runtime, arguments[1].getObject(runtime).getArray(runtime), jsInvoker);
 
           [module configureProps:props uiProps:uiProps];
 
