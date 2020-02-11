@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "9.0", :tvos => "9.0" }
   s.source       = { :git => "https://github.com/kmagiera/react-native-reanimated.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/**/*.{h,m}"
+  s.source_files = "ios/**/*.{h,m,mm}"
   s.requires_arc = true
 
   s.dependency "React"
