@@ -26,5 +26,8 @@ Pod::Spec.new do |s|
   s.dependency "ReactCommon/jscallinvoker"
   s.dependency 'React-cxxreact'
   s.dependency 'Folly'
+
+  s.xcconfig = { 'USER_HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/Folly"' }
+
 end
 
