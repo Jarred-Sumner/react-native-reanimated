@@ -2,6 +2,8 @@
 
 #import "REANodesManager.h"
 #import "Transitioning/REATransitionManager.h"
+#import "REAJSIModule.h"
+#import <React/RCTBridge+Private.h>
 
 typedef void (^AnimatedOperation)(REANodesManager *nodesManager);
 
@@ -44,6 +46,11 @@ RCT_EXPORT_MODULE(ReanimatedModule);
 
   [bridge.eventDispatcher addDispatchObserver:self];
   [bridge.uiManager.observerCoordinator addObserver:self];
+
+  __block REAModule *this = self;
+  [bridge dispatchBlock:^{
+    REAJSIModule::install(this);
+  } queue:RCTJSThread]
 }
 
 #pragma mark -- Transitioning API
